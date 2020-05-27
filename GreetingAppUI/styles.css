@@ -8,6 +8,7 @@
 .table{
     font-size: 25px;
     width: 100%; 
+    border-collapse: collapse;
 }
 th{
     height: 50px;
