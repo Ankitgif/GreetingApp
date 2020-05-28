@@ -1,0 +1,18 @@
+[
+   {
+      "id": "1",
+      "firstname": "John",
+      "lastname": "Dae",
+      "email": "john121@gmail.com",
+      "edit": "edit1",
+      "delete": "delete1"
+   },
+   {
+      "id": "2",
+      "firstname": "Rack",
+      "lastname": "Jackson",
+      "email": "rack321@gmail.com",
+      "edit": "edit2",
+      "delete": "delete2"
+   }
+]
