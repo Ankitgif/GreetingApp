@@ -49,19 +49,32 @@
 
 </html>
  <script>
-$(document).ready(function () {
-$.getJSON("data.json", function (data) {
-let employee_data = '';
-$.each(data, function (key, value) {
-employee_data += '<tr>';
-    employee_data += '<td>' + value.firstname + '</td>';
-    employee_data += '<td>' + value.lastname + '</td>';
-    employee_data += '<td>' + value.email + '</td>';
-    employee_data += '<td>' + value.edit + '</td>';
-    employee_data += '<td>' + value.delete + '</td>';
-    employee_data += '</tr>';
-    });
-    $('#employee_table').append(employee_data);
-    });
-    });
+    $.ajax({
+    url: 'data.json',
+    dataType: 'json',
+    success: function(data) {
+        for (var i=0; i<data.length; i++) {
+            var row = $('<tr><td>' + data[i].firstname+ '</td><td>' + data[i].lastname + '</td><td>' + data[i].email + '</td><td>' + data[i].edit + '</td><td>' + data[i].delete + '</td></tr>');
+            $('.table').append(row);
+        }
+    },
+    error: function(jqXHR, textStatus, errorThrown){
+        console.log('Error: ' + textStatus + ' - ' + errorThrown);
+    }
+}); 
+// $(document).ready(function () {
+// $.getJSON("data.json", function (data) {
+// let employee_data = '';
+// $.each(data, function (key, value) {
+// employee_data += '<tr>';
+//     employee_data += '<td>' + value.firstname + '</td>';
+//     employee_data += '<td>' + value.lastname + '</td>';
+//     employee_data += '<td>' + value.email + '</td>';
+//     employee_data += '<td>' + value.edit + '</td>';
+//     employee_data += '<td>' + value.delete + '</td>';
+//     employee_data += '</tr>';
+//     });
+//     $('#employee_table').append(employee_data);
+//     });
+//     });
     </script>
