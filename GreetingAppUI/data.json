@@ -4,24 +4,23 @@
       "firstname": "John",
       "lastname": "Dae",
       "email": "john121@gmail.com",
-      "edit": "public/assets/edit.png",
-      "delete": "public/assets/delete.png"
+      "edit": "../assets/edit.png",
+      "delete": "../assets/delete.png"
    },
    {
       "id": "2",
       "firstname": "Rack",
       "lastname": "Jackson",
       "email": "rack321@gmail.com",
-      "edit": "public/assets/edit.png",
-      "delete": "public/assets/delete.png"
+      "edit": "../assets/edit.png",
+      "delete": "../assets/delete.png"
    },
    {
       "id": "3",
       "firstname": "Ankit",
       "lastname": "Kumar",
       "email": "ankit@gmail.com",
-      "edit": "public/assets/edit.png",
-      "delete": "public/assets/delete.png"
-
+      "edit": "../assets/edit.png",
+      "delete": "../assets/delete.png"
    }
 ]
