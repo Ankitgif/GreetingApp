@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/Ankitgif/GreetingApp/issues"
   },
-  "homepage": "https://github.com/Ankitgif/GreetingApp#readme"
+  "homepage": "https://github.com/Ankitgif/GreetingApp#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
 }
