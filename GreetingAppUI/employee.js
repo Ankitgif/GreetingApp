@@ -13,7 +13,8 @@ $.ajax({
         }
     },
     error: function (jqXHR, textStatus, errorThrown) { //the error parameter contains the function to be executed when the server request fails
-        console.log('Error: ' + textStatus + ' - ' + errorThrown);
+        console.log('Error: ' + textStatus + ' - ' + errorThrown);          //textStatus - contains the status of the call
+                                                                            //xhr - contains the XMLHttpRequest object
     }
 });
 
