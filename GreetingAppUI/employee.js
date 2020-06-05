@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    
+
     getEmployee();
 
     $("#addemp").on("click", function (e) {
@@ -9,7 +9,7 @@ $(document).ready(function () {
     function getEmployee() {
         $('#employeeBody').html('');
         $.ajax({
-            url: 'http://localhost:3000/employees',             //onclick="window.location.href='updateform.html/';"
+            url: 'http://localhost:3000/employees',
             method: 'GET',
             dataType: 'json',
             data: {
@@ -31,43 +31,22 @@ $(document).ready(function () {
         });
     }
 
-    function getOneEmployee(id){
+    function getOneEmployee(id) {
         $.ajax({
             method: 'GET',
             url: 'http://localhost:3000/employees/' + id,
-            dataType:'json',
-            success: function(data){
-                
-                $($("#newForm")[0].id).val(data.id);              
+            dataType: 'json',
+            success: function (data) {
+
+                $($("#newForm")[0].id).val(data.id);
                 $($("#newForm")[0].fname).val(data.firstname);
                 $($("#newForm")[0].lname).val(data.lastname);
                 $($("#newForm")[0].email).val(data.email);
-            // var tr = $(this).closest('tr');
-            // var id = $(tr).find('td:eq(0)').text();
-            // var fname = $(tr).find('td:eq(1)').text();
-            // var lname = $(tr).find('td:eq(2)').text();
-            // var email = $(tr).find('td:eq(3)').text();
-
-            // $('input[name="upid"]').val(id);
-            // $('input[name="upfname"]').val(fname);
-            // $('input[name="uplname"]').val(lname);
-            // $('input[name="upemail"]').val(email);
-                // $("#updateid").val(data.id);              
-                // $("#updatefname").val(data.fname);
-                // $("#updatelname").val(data.lname);
-                // $("#updateemail").val(data.email);
-                // getEmployee();
-                // $("#id").val(data.id);              
-                // $("#fname").val(data.firstname);
-                // $("#lname").val(data.lastname);
-                // $("#email").val(data.email);
                 getEmployee();
-            
+
             }
-        }); 
+        });
     }
-
-
 
     $("#submitData").on("click", function (e) {
         let data = {
@@ -100,33 +79,17 @@ $(document).ready(function () {
 
     function loadButtons() {
 
-        $(document).on('click','.editbtn',function(){
-        //   //  $("#newForm").toggle();
-        //     var tr = $(this).closest('tr');
-           getOneEmployee($($(this)[0]).data("id"));
-        // //   window.location.href="updateform.html";
-        //     var id = $(tr).find('td:eq(0)').text();
-        //     var fname = $(tr).find('td:eq(1)').text();
-        //     var lname = $(tr).find('td:eq(2)').text();
-        //     var email = $(tr).find('td:eq(3)').text();
-
-        //     $('input[name="Id"]').val(id);
-        //     $('input[name="Fname"]').val(fname);
-        //     $('input[name="Lname"]').val(lname);
-        //     $('input[name="Email"]').val(email);
-        //   //  getOneEmployee($($(this)[0]).data("id"));
-        
-            
+        $(document).on('click', '.editbtn', function () {
+            getOneEmployee($($(this)[0]).data("id"));
         });
 
         $(".deletebtn").click(function (e) {
-            //    console.log("ankit");
             deleteEmployee($($(this)[0]).data("id"));
             e.preventDefault();
         });
     }
 
-    function putEmployee(id,data) {
+    function putEmployee(id, data) {
         $.ajax({
             url: 'http://localhost:3000/employees/' + id,
             method: 'PUT',
@@ -135,24 +98,9 @@ $(document).ready(function () {
             success: function (data) {
                 console.log(data);
                 getEmployee();
-                // alert("Employee Updated Successfully");
             }
         });
     }
-    // function putEmployee(id, data) {
-    //     $.ajax({
-    //         url: 'http://localhost:3000/employees/' + id,
-    //         method: 'PUT',
-    //         dataType: 'json',
-    //         data: data,
-    //         success: function (data) {
-    //             console.log(data);
-    //             getEmployee();
-    //             alert("Employee Updated Successfully")
-    //         }
-    //     });
-    // }
-
 
     $("#updateEmployee").on("click", function (e) {
         let data = {
@@ -161,29 +109,11 @@ $(document).ready(function () {
             lastname: $("#lname").val(),
             email: $("#email").val(),
         }
-        putEmployee($("#id").val(),data);
+        putEmployee($("#id").val(), data);
+        $("#newForm").trigger("reset");
         $("#newForm").toggle();
-      //  $("#updateForm").trigger("reset");
         e.preventDefault();
-      //  document.forms[0].reset();
-
-    
     });
-    // $("#updateEmployee").on("click", function (e) {
-    //     let data = {
-    //         id: $("#updateid").val(),
-    //         firstname: $("#updatefname").val(),
-    //         lastname: $("#updatelname").val(),
-    //         email: $("#updateemail").val(),
-    //     }
-    //     putEmployee($("#updateid").val(),data);
-    //   //  $("#updateForm").trigger("reset");
-    //     e.preventDefault();
-    //     document.forms[0].reset();
-
-    
-    // });
-
 
     function deleteEmployee(id) {
         $.ajax({
@@ -198,6 +128,4 @@ $(document).ready(function () {
 
         });
     }
-
-
 });
