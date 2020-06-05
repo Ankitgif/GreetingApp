@@ -38,10 +38,10 @@ $(document).ready(function () {
             dataType:'json',
             success: function(data){
                 
-                // $($("#updateForm")[0].updateid).val(data.id);              
-                // $($("#updateForm")[0].updatefname).val(data.fname);
-                // $($("#updateForm")[0].updatelname).val(data.lname);
-                // $($("#updateForm")[0].updateemail).val(data.email);
+                $($("#newForm")[0].id).val(data.id);              
+                $($("#newForm")[0].fname).val(data.firstname);
+                $($("#newForm")[0].lname).val(data.lastname);
+                $($("#newForm")[0].email).val(data.email);
             // var tr = $(this).closest('tr');
             // var id = $(tr).find('td:eq(0)').text();
             // var fname = $(tr).find('td:eq(1)').text();
@@ -52,10 +52,15 @@ $(document).ready(function () {
             // $('input[name="upfname"]').val(fname);
             // $('input[name="uplname"]').val(lname);
             // $('input[name="upemail"]').val(email);
-                $("#updateid").val(data.id);              
-                $("#updatefname").val(data.fname);
-                $("#updatelname").val(data.lname);
-                $("#updateemail").val(data.email);
+                // $("#updateid").val(data.id);              
+                // $("#updatefname").val(data.fname);
+                // $("#updatelname").val(data.lname);
+                // $("#updateemail").val(data.email);
+                // getEmployee();
+                // $("#id").val(data.id);              
+                // $("#fname").val(data.firstname);
+                // $("#lname").val(data.lastname);
+                // $("#email").val(data.email);
                 getEmployee();
             
             }
@@ -96,19 +101,21 @@ $(document).ready(function () {
     function loadButtons() {
 
         $(document).on('click','.editbtn',function(){
-          //  $("#newForm").toggle();
-           // var tr = $(this).closest('tr');
+        //   //  $("#newForm").toggle();
+        //     var tr = $(this).closest('tr');
            getOneEmployee($($(this)[0]).data("id"));
-           window.location.href="updateform.html";
-            // var id = $(tr).find('td:eq(0)').text();
-            // var fname = $(tr).find('td:eq(1)').text();
-            // var lname = $(tr).find('td:eq(2)').text();
-            // var email = $(tr).find('td:eq(3)').text();
+        // //   window.location.href="updateform.html";
+        //     var id = $(tr).find('td:eq(0)').text();
+        //     var fname = $(tr).find('td:eq(1)').text();
+        //     var lname = $(tr).find('td:eq(2)').text();
+        //     var email = $(tr).find('td:eq(3)').text();
 
-            // $('input[name="Id"]').val(id);
-            // $('input[name="Fname"]').val(fname);
-            // $('input[name="Lname"]').val(lname);
-            // $('input[name="Email"]').val(email);
+        //     $('input[name="Id"]').val(id);
+        //     $('input[name="Fname"]').val(fname);
+        //     $('input[name="Lname"]').val(lname);
+        //     $('input[name="Email"]').val(email);
+        //   //  getOneEmployee($($(this)[0]).data("id"));
+        
             
         });
 
@@ -119,7 +126,7 @@ $(document).ready(function () {
         });
     }
 
-    function putEmployee(id, data) {
+    function putEmployee(id,data) {
         $.ajax({
             url: 'http://localhost:3000/employees/' + id,
             method: 'PUT',
@@ -128,26 +135,54 @@ $(document).ready(function () {
             success: function (data) {
                 console.log(data);
                 getEmployee();
-                alert("Employee Updated Successfully");
+                // alert("Employee Updated Successfully");
             }
         });
     }
+    // function putEmployee(id, data) {
+    //     $.ajax({
+    //         url: 'http://localhost:3000/employees/' + id,
+    //         method: 'PUT',
+    //         dataType: 'json',
+    //         data: data,
+    //         success: function (data) {
+    //             console.log(data);
+    //             getEmployee();
+    //             alert("Employee Updated Successfully")
+    //         }
+    //     });
+    // }
 
 
     $("#updateEmployee").on("click", function (e) {
         let data = {
-            id: $("#updateid").val(),
-            firstname: $("#updatefname").val(),
-            lastname: $("#updatelname").val(),
-            email: $("#updateemail").val(),
+            id: $("#id").val(),
+            firstname: $("#fname").val(),
+            lastname: $("#lname").val(),
+            email: $("#email").val(),
         }
-        putEmployee($("#updateid").val(),data);
+        putEmployee($("#id").val(),data);
+        $("#newForm").toggle();
       //  $("#updateForm").trigger("reset");
         e.preventDefault();
-        document.forms[0].reset();
+      //  document.forms[0].reset();
 
     
     });
+    // $("#updateEmployee").on("click", function (e) {
+    //     let data = {
+    //         id: $("#updateid").val(),
+    //         firstname: $("#updatefname").val(),
+    //         lastname: $("#updatelname").val(),
+    //         email: $("#updateemail").val(),
+    //     }
+    //     putEmployee($("#updateid").val(),data);
+    //   //  $("#updateForm").trigger("reset");
+    //     e.preventDefault();
+    //     document.forms[0].reset();
+
+    
+    // });
 
 
     function deleteEmployee(id) {
