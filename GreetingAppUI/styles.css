@@ -6,6 +6,29 @@
     font-size: 30px;
     border-radius: 4px;
 }
+#updateEmployee{
+    background-color: cornflowerblue;
+    border: none;
+    color: white;
+    text-align: center;
+    font-size: 30px;
+    border-radius: 4px;
+}
+.editbtn{
+    background-color: cornflowerblue;
+    border: none;
+    text-align: center;
+    font-size: 30px;
+    border-radius: 4px;
+}
+.deletebtn{
+    background-color: cornflowerblue;
+    border: none;
+    color: white;
+    text-align: center;
+    font-size: 30px;
+    border-radius: 4px;
+}
 .button{
     margin-top: 100px;
 }
@@ -13,10 +36,13 @@
     font-size: 25px;
     width: 100%;
     border-collapse: collapse;
+    font-family: 'Lato', sans-serif;
 }
 th{
     height: 50px;
     text-align: center;
+    border: 10px;
+    border-radius: 5px;
 }
 td{
     height: 60px;
@@ -27,3 +53,48 @@ td{
     text-align: center;
     color: cornflowerblue;
 }
+#newForm{
+    margin-top: 20px;
+}
+#submitData{
+    background-color: cornflowerblue;
+    border: none;
+    color: white;
+    text-align: center;
+    font-size: 20px;
+    border-radius: 4px;
+}
+th {
+    background: lightblue;
+    border-color: white;
+}
+td:nth-child(1){ background: hsl(150, 50%, 50%); }
+input[type=number],input[type=text] {
+    width: 80%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+}
+#newForm input[type=text]:focus, 
+#newForm input[type=number]:focus,
+#newForm textarea:focus, 
+#newForm select:focus{
+	-moz-box-shadow: 0 0 8px #88D5E9;
+	-webkit-box-shadow: 0 0 8px #88D5E9;
+	box-shadow: 0 0 8px #88D5E9;
+	border: 1px solid rgb(20, 80, 95);
+}
+#updateForm input[type=text]:focus, 
+#updateForm input[type=number]:focus,
+#updateForm textarea:focus, 
+#updateForm select:focus{
+	-moz-box-shadow: 0 0 8px #88D5E9;
+	-webkit-box-shadow: 0 0 8px #88D5E9;
+	box-shadow: 0 0 8px #88D5E9;
+	border: 1px solid rgb(20, 80, 95);
+}
+
+
+
+
+
