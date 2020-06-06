@@ -1,5 +1,6 @@
 $(document).ready(function () {
-
+    $("#newForm").hide();
+    $("#updateEmployee").hide();
     getEmployee();
 
     $("#addemp").on("click", function (e) {
@@ -49,19 +50,19 @@ $(document).ready(function () {
     }
 
     $("#submitData").on("click", function (e) {
-        if(validate() == true){
+        if (validate() == true) {
             let data = {
                 id: $($("#newForm")[0].id).val(),
                 firstname: $($("#newForm")[0].fname).val(),
                 lastname: $($("#newForm")[0].lname).val(),
                 email: $($("#newForm")[0].email).val(),
             }
-    
+
             postEmployee(data);
             $("#newForm").trigger("reset");
             $("#newForm").toggle();
             e.preventDefault();
-        }else{
+        } else {
             alert("Data cannot be submitted")
             e.preventDefault();
         }
@@ -86,6 +87,8 @@ $(document).ready(function () {
 
         $(document).on('click', '.editbtn', function () {
             getOneEmployee($($(this)[0]).data("id"));
+            $("#newForm").show();
+            $("#updateEmployee").show();
         });
 
         $(".deletebtn").click(function (e) {
@@ -108,7 +111,7 @@ $(document).ready(function () {
     }
 
     $("#updateEmployee").on("click", function (e) {
-        if(validate() == true){
+        if (validate() == true) {
             let data = {
                 id: $("#id").val(),
                 firstname: $("#fname").val(),
@@ -120,11 +123,11 @@ $(document).ready(function () {
             $("#newForm").toggle();
             e.preventDefault();
         }
-        else{
+        else {
             alert("Data cannot be updated");
             e.preventDefault();
         }
-       
+
     });
 
     function deleteEmployee(id) {
@@ -142,29 +145,27 @@ $(document).ready(function () {
     }
 
     function validate() {
-    
-        if( document.myForm.id.value == "") {
-            alert( "Please provide your id!" );
-            document.myForm.id.focus() ;
-            return false;
-         }
-        if( document.myForm.fname.value == "") {
-           alert( "Please provide your first name!" );
-           document.myForm.fname.focus() ;
-           return false;
-        }
-        if( document.myForm.lname.value == "" ) {
-            alert( "Please provide your last name!" );
-            document.myForm.lname.focus() ;
-            return false;
-         }
-        if( document.myForm.email.value == "" ) {
-           alert( "Please provide your Email!" );
-           document.myForm.email.focus() ;
-           return false;
-        }
-        return( true );
-     }
 
-    
+        if (document.myForm.id.value == "") {
+            alert("Please provide your id!");
+            document.myForm.id.focus();
+            return false;
+        }
+        if (document.myForm.fname.value == "") {
+            alert("Please provide your first name!");
+            document.myForm.fname.focus();
+            return false;
+        }
+        if (document.myForm.lname.value == "") {
+            alert("Please provide your last name!");
+            document.myForm.lname.focus();
+            return false;
+        }
+        if (document.myForm.email.value == "") {
+            alert("Please provide your Email!");
+            document.myForm.email.focus();
+            return false;
+        }
+        return (true);
+    }
 });
