@@ -49,17 +49,22 @@ $(document).ready(function () {
     }
 
     $("#submitData").on("click", function (e) {
-        let data = {
-            id: $($("#newForm")[0].id).val(),
-            firstname: $($("#newForm")[0].fname).val(),
-            lastname: $($("#newForm")[0].lname).val(),
-            email: $($("#newForm")[0].email).val(),
+        if(validate() == true){
+            let data = {
+                id: $($("#newForm")[0].id).val(),
+                firstname: $($("#newForm")[0].fname).val(),
+                lastname: $($("#newForm")[0].lname).val(),
+                email: $($("#newForm")[0].email).val(),
+            }
+    
+            postEmployee(data);
+            $("#newForm").trigger("reset");
+            $("#newForm").toggle();
+            e.preventDefault();
+        }else{
+            alert("Data cannot be submitted")
+            e.preventDefault();
         }
-
-        postEmployee(data);
-        $("#newForm").trigger("reset");
-        $("#newForm").toggle();
-        e.preventDefault();
 
     });
 
@@ -103,16 +108,23 @@ $(document).ready(function () {
     }
 
     $("#updateEmployee").on("click", function (e) {
-        let data = {
-            id: $("#id").val(),
-            firstname: $("#fname").val(),
-            lastname: $("#lname").val(),
-            email: $("#email").val(),
+        if(validate() == true){
+            let data = {
+                id: $("#id").val(),
+                firstname: $("#fname").val(),
+                lastname: $("#lname").val(),
+                email: $("#email").val(),
+            }
+            putEmployee($("#id").val(), data);
+            $("#newForm").trigger("reset");
+            $("#newForm").toggle();
+            e.preventDefault();
         }
-        putEmployee($("#id").val(), data);
-        $("#newForm").trigger("reset");
-        $("#newForm").toggle();
-        e.preventDefault();
+        else{
+            alert("Data cannot be updated");
+            e.preventDefault();
+        }
+       
     });
 
     function deleteEmployee(id) {
@@ -128,4 +140,31 @@ $(document).ready(function () {
 
         });
     }
+
+    function validate() {
+    
+        if( document.myForm.id.value == "") {
+            alert( "Please provide your id!" );
+            document.myForm.id.focus() ;
+            return false;
+         }
+        if( document.myForm.fname.value == "") {
+           alert( "Please provide your first name!" );
+           document.myForm.fname.focus() ;
+           return false;
+        }
+        if( document.myForm.lname.value == "" ) {
+            alert( "Please provide your last name!" );
+            document.myForm.lname.focus() ;
+            return false;
+         }
+        if( document.myForm.email.value == "" ) {
+           alert( "Please provide your Email!" );
+           document.myForm.email.focus() ;
+           return false;
+        }
+        return( true );
+     }
+
+    
 });
