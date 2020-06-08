@@ -89,6 +89,7 @@ $(document).ready(function () {
             getOneEmployee($($(this)[0]).data("id"));
             $("#newForm").show();
             $("#updateEmployee").show();
+            $("#submitData").hide();
         });
 
         $(".deletebtn").click(function (e) {
@@ -145,23 +146,35 @@ $(document).ready(function () {
     }
 
     function validate() {
+        let firstName = document.getElementById("fname").value;
+        let firstNameREGEX = /^[A-Z]{1}[a-z]{3,}$/;
+        let firstNameResult = firstNameREGEX.test(firstName);
+
+        let lastName = document.getElementById("lname").value;
+        let lastNameREGEX = /^[A-Z]{1}[a-z]{3,}$/;
+        let lastNameResult = lastNameREGEX.test(lastName);
+
+        let Email = document.getElementById("email").value;
+        let emailREGEX = /^[a-z]{3,}(|[.]?[0-9a-zA-Z]+)([@])([a-z0-9]+)([.|+|_][a-z]{2,4})(|[.][a-zA-Z]{2})$/;
+        let emailResult = emailREGEX.test(Email);
+
 
         if (document.myForm.id.value == "") {
             alert("Please provide your id!");
             document.myForm.id.focus();
             return false;
         }
-        if (document.myForm.fname.value == "") {
-            alert("Please provide your first name!");
+        if (firstNameResult == false) {
+            alert("Please provide your first name should be starting with capital letter and maximum character should be more than 3!");
             document.myForm.fname.focus();
             return false;
         }
-        if (document.myForm.lname.value == "") {
-            alert("Please provide your last name!");
+        if (lastNameResult == false) {
+            alert("Please provide your last name should be starting with capital letter and maximum character should be more than 3!");
             document.myForm.lname.focus();
             return false;
         }
-        if (document.myForm.email.value == "") {
+        if (emailResult == false) {
             alert("Please provide your Email!");
             document.myForm.email.focus();
             return false;
